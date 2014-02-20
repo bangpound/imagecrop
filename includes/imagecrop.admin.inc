@@ -311,6 +311,11 @@ function imagecrop_crop_settings_form($form, $form_state, $imagecrop) {
   $form['image-crop-scale'] = array(
     '#type' => 'hidden',
     '#default_value' => $imagecrop->getScale(),
+    '#attached' => array(
+      'library' => array(
+        array('system', 'ui.slider'),
+      ),
+    ),
   );
 
   $form['image-crop-rotation'] = array(
@@ -436,7 +441,7 @@ function imagecrop_scale_settings_form($form, $form_state, $imagecrop) {
     $current_width = $imagecrop->getScale();
     $form['scaling'] = array(
       '#type' => 'select',
-      '#options' => $options,
+      '#options' => array_reverse($options),
       '#default_value' => $current_width . 'x'. floor($current_width / $aspect),
       '#title' => t('Scale image')
     );

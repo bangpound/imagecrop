@@ -44,6 +44,30 @@ Drupal.Imagecrop.cropUi.initControls = function() {
   Drupal.Imagecrop.scalingDropdown = $('#edit-scaling', '#imagecrop-scale-settings-form');
   Drupal.Imagecrop.scalingDropdown.bind('change', Drupal.Imagecrop.cropUi.applyEffects);
   
+  Drupal.Imagecrop.scalingSlider = $( "<div id='slider'></div>" )
+    .insertAfter( Drupal.Imagecrop.scalingDropdown )
+    .css('width', '100%')
+    .slider({
+      min: 1,
+      max: $('option', Drupal.Imagecrop.scalingDropdown).length,
+      range: "max",
+      value: Drupal.Imagecrop.scalingDropdown[ 0 ].selectedIndex + 1,
+      slide: function( event, ui ) {
+        Drupal.Imagecrop.scalingDropdown[ 0 ].selectedIndex = ui.value - 1;
+        var dimensions = Drupal.Imagecrop.scalingDropdown.val().split('x');
+        if (dimensions.length == 2) {
+          $('#imagecrop-crop-container .jcrop-holder,#imagecrop-crop-container .jcrop-holder img').css({ width: dimensions[0], height: dimensions[1] });
+        }
+      },
+      stop: function(event, ui) {
+        $(Drupal.Imagecrop.scalingDropdown).trigger('change');
+      }
+    });
+
+  $(Drupal.Imagecrop.scalingDropdown).change(function() {
+    Drupal.Imagecrop.scalingSlider.slider( "value", this.selectedIndex + 1 );
+  }).hide();
+
   if (Drupal.settings.imagecrop.rotation) {
     Drupal.Imagecrop.rotationDropdown = $('#edit-rotation');
     Drupal.Imagecrop.imageCropRotationField = $('input[name="image-crop-rotation"]');
