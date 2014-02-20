@@ -604,8 +604,8 @@ class ImageCrop {
     // Add crop ui if in cropping mode.
     if ($in_cropping_mode) {
 
-      drupal_add_js($path . '/js/jcrop/jquery.Jcrop.js');
-      drupal_add_css($path.'/css/jquery.Jcrop.css');
+      drupal_add_js(libraries_get_path('Jcrop') . '/js/jquery.Jcrop.js');
+      drupal_add_css(libraries_get_path('Jcrop') . '/css/jquery.Jcrop.css');
       drupal_add_js($path . '/js/imagecrop.ui.crop.js');
 
       $settings = array(
