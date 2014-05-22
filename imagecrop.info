@@ -1,6 +1,7 @@
 name = Image javascript crop
 description = Provides a javascript crop toolbox via the image effects.
 dependencies[] = image
+dependencies[] = libraries
 core = 7.x
 version = VERSION
 files[] = includes/imagecrop.module
