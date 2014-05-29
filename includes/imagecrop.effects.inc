@@ -16,6 +16,7 @@ function imagecrop_image_effect_info() {
     'label' => t('Javascript crop'),
     'help' => t('Create a crop with a javascript toolbox.'),
     'effect callback' => 'imagecrop_effect',
+    'dimensions callback' => 'imagecrop_dimensions',
     'form callback' => 'imagecrop_effect_form',
     'summary theme' => 'imagecrop_effect_summary',
   );
@@ -30,6 +31,17 @@ function imagecrop_image_effect_info() {
 
   return $effects;
 
+}
+
+/**
+ * Image dimensions callback; Image javascript crop.
+ */
+function imagecrop_dimensions(array &$dimensions, array $data) {
+  if ($dimensions['width'] && $dimensions['height']) {
+    // The new image will have the exact dimensions defined for the effect.
+    $dimensions['width'] = $data['width'];
+    $dimensions['height'] = $data['height'];
+  }
 }
 
 /**
