@@ -1,0 +1,17 @@
+{
+    "name": "drupal/imagecrop",
+    "description": "Provides a javascript crop toolbox via the image effects.",
+    "type": "drupal-module",
+    "require": {
+        "drupal/drupal": "7.*",
+        "drupal/image": "7.*",
+        "drupal/libraries": "7.2.*"
+    },
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Benjamin Doherty",
+            "email": "bjd@bangpound.org"
+        }
+    ]
+}
