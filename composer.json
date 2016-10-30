@@ -4,8 +4,7 @@
     "type": "drupal-module",
     "require": {
         "drupal/drupal": "7.*",
-        "drupal/image": "7.*",
-        "drupal/libraries": "7.2.*"
+        "drupal/libraries": "2.*"
     },
     "license": "GPL-2.0",
     "authors": [
